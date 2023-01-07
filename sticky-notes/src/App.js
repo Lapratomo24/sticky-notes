@@ -1,14 +1,9 @@
 import React from "react";
+import Header from "../src/components/Header";
 
 const App = () => (
   <div>
-    <header>
-      <h1 class="app-header__title">Super Sticky Notes</h1>
-      <aside class="app-header__controls">
-        <button class="add-new">+ New Note</button>
-        <input class="search" type="text" placeholder="Type here to search..." />
-      </aside>
-    </header>
+    <Header />
     <ul class="notes-list">
       <li class="note">
         <input class="note__title" type="text" placeholder="Title" />
