@@ -25,14 +25,14 @@ class App extends Component {
         doesMatchSearch: true
       }
     ],
-    searchText: "search for me"
+    searchText: "search"
   };
 
   render() {
     return (
       <div>
-        <Header />
-        <NotesList />
+        <Header searchText={this.state.searchText} />
+        <NotesList notes={this.state.notes} />
       </div>
     )
   }

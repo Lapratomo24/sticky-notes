@@ -1,16 +1,10 @@
-import React, { Component } from "react";
+import React from "react";
 import Note from "./Note";
 
-class NotesList extends Component {
-    render() {
-        return (
-            <ul class="notes-list">
-                <Note />
-                <Note />
-                <Note />
-            </ul>
-        )
-    }
-}
+const NotesList = props => {
+    const renderNote = note => <Note note={note} key={note.id} />;
+    const noteElements = props.notes.map(renderNote);
+    return <ul className="notes-list">{noteElements}</ul>
+};
 
 export default NotesList;
