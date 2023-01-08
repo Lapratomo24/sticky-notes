@@ -5,9 +5,7 @@ import NotesList from "./components/NotesList";
 const App = () => (
   <div>
     <Header />
-    <ul class="notes-list">
-      <NotesList />
-    </ul>
+    <NotesList />
   </div>
 );
 

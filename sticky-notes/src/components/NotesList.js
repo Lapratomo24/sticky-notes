@@ -1,25 +1,14 @@
 import React, { Component } from "react";
+import Note from "./Note";
 
 class NotesList extends Component {
     render() {
         return (
-            <>
-            <li class="note">
-                <input class="note__title" type="text" placeholder="Title" />
-                <textarea class="note__description" placeholder="Description..." />
-                <span class="note__delete">X</span>
-            </li>
-            <li class="note">
-                <input class="note__title" type="text" placeholder="Title" />
-                <textarea class="note__description" placeholder="Description..." />
-                <span class="note__delete">X</span>
-            </li>
-            <li class="note">
-                <input class="note__title" type="text" placeholder="Title" />
-                <textarea class="note__description" placeholder="Description..." />
-                <span class="note__delete">X</span>
-            </li>
-            </>
+            <ul class="notes-list">
+                <Note />
+                <Note />
+                <Note />
+            </ul>
         )
     }
 }
