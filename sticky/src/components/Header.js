@@ -4,8 +4,8 @@ const Header = props => (
     <header>
         <h1 class="app-header__title">Super Sticky Notes</h1>
         <aside class="app-header__controls">
-            <button class="add-new">+ New Note</button>
-            <input class="search" type="text" placeholder="Type here to search..." />
+            <button onClick={props.addNote} class="add-new">+ New Note</button>
+            <input value={props.searchText} class="search" type="text" placeholder="Type here to search..." />
         </aside>
     </header>
 );

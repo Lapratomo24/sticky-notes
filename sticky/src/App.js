@@ -7,31 +7,30 @@ class App extends Component {
   state = {
     notes: [
       {
-        id: 0,
-        title: "code",
-        description: "master frontend & backend languages",
-        doesMatchSearch: true
-      },
-      {
-        id: 1,
-        title: "sport",
-        description: "cycle and workout at the gym regularly",
-        doesMatchSearch: true
-      },
-      {
-        id: 2,
-        title: "food",
-        description: "eat healthy food and hydrate well",
+        id: Date.now(),
+        title: "",
+        description: "",
         doesMatchSearch: true
       }
     ],
-    searchText: "search"
+    searchText: ""
+  };
+
+  addNote = () => {
+    const newNote = {
+      id: Date.now(),
+      title: "",
+      description: "",
+      doesMatchSearch: true
+    };
+    const newNotes = [newNote, ...this.state.notes];
+    this.setState({ notes: newNotes });
   };
 
   render() {
     return (
       <div>
-        <Header searchText={this.state.searchText} />
+        <Header searchText={this.state.searchText} addNote={this.addNote} />
         <NotesList notes={this.state.notes} />
       </div>
     )
