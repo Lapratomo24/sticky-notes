@@ -16,6 +16,7 @@ class App extends Component {
     searchText: ""
   };
 
+  // add a new note
   addNote = () => {
     const newNote = {
       id: Date.now(),
@@ -23,6 +24,7 @@ class App extends Component {
       description: "",
       doesMatchSearch: true
     };
+    // add the new note to existing array of notes
     const newNotes = [newNote, ...this.state.notes];
     this.setState({ notes: newNotes });
   };
