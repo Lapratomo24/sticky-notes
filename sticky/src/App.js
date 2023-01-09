@@ -29,11 +29,29 @@ class App extends Component {
     this.setState({ notes: newNotes });
   };
 
+  // edit a note
+  editNote = (noteId, updatedField, updatedValue) => {
+    const updatedNote = this.state.notes.map(note => {
+      if (noteId !== note.id) {
+        return note;
+      } else {
+        if (updatedField === "title") {
+          note.title = updatedValue;
+          return note;
+        } else {
+          note.description = updatedValue;
+          return note;
+        }
+      }
+    });
+    this.setState({ notes: updatedNote });
+  }
+
   render() {
     return (
       <div>
         <Header searchText={this.state.searchText} addNote={this.addNote} />
-        <NotesList notes={this.state.notes} />
+        <NotesList notes={this.state.notes} editNote={this.editNote } />
       </div>
     )
   }
