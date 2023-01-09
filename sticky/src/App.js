@@ -45,12 +45,35 @@ class App extends Component {
       }
     });
     this.setState({ notes: updatedNote });
-  }
+  };
+
+  // search a note
+  searchNote = (text) => {
+    const newsearchText = text.toLowerCase(); 
+    const searchResult = this.state.notes.map(note => {
+      if (!newsearchText) {
+        note.doesMatchSearch = true;
+        return note;
+      } else {
+        const title = title.toLowerCase();
+        const description = description.toLowerCase();
+        const titleMatch = title.includes(searchText);
+        const descriptionMatch = description.includes(searchText);
+        const hasMatch = titleMatch || descriptionMatch;
+        note.doesMatchSearch = hasMatch;
+        return note;
+      };
+    })
+    this.setState({
+      notes: searchResult,
+      searchText: newsearchText
+    })
+  };
 
   render() {
     return (
       <div>
-        <Header searchText={this.state.searchText} addNote={this.addNote} />
+        <Header searchText={this.state.searchText} addNote={this.addNote} searchNote={this.searchNote} />
         <NotesList notes={this.state.notes} editNote={this.editNote } />
       </div>
     )
