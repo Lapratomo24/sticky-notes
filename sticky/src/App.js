@@ -1,5 +1,5 @@
 import React, { Component } from "react";
-import Header from "../src/components/Header";
+import Header from "./components/Header";
 import NotesList from "./components/NotesList";
 
 class App extends Component {
@@ -49,16 +49,16 @@ class App extends Component {
 
   // search a note
   searchNote = (text) => {
-    const newsearchText = text.toLowerCase(); 
+    const newSearchText = text.toLowerCase(); 
     const searchResult = this.state.notes.map(note => {
-      if (!newsearchText) {
+      if (!newSearchText) {
         note.doesMatchSearch = true;
         return note;
       } else {
-        const title = title.toLowerCase();
-        const description = description.toLowerCase();
-        const titleMatch = title.includes(searchText);
-        const descriptionMatch = description.includes(searchText);
+        const title = note.title.toLowerCase();
+        const description = note.description.toLowerCase();
+        const titleMatch = title.includes(newSearchText);
+        const descriptionMatch = description.includes(newSearchText);
         const hasMatch = titleMatch || descriptionMatch;
         note.doesMatchSearch = hasMatch;
         return note;
@@ -66,15 +66,21 @@ class App extends Component {
     })
     this.setState({
       notes: searchResult,
-      searchText: newsearchText
+      searchText: newSearchText
     })
   };
+
+  // delete a note
+  deleteNote = (noteId) => {
+    const deletedNotes = this.state.notes.filter(note => note.id !== noteId);
+    this.setState({ notes: deletedNotes });
+  }
 
   render() {
     return (
       <div>
         <Header searchText={this.state.searchText} addNote={this.addNote} searchNote={this.searchNote} />
-        <NotesList notes={this.state.notes} editNote={this.editNote } />
+        <NotesList notes={this.state.notes} editNote={this.editNote } deleteNote={this.deleteNote} />
       </div>
     )
   }
